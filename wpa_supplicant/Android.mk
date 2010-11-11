@@ -8,7 +8,7 @@ LOCAL_PATH := $(call my-dir)/../..
 ifeq ($(TARGET_PRODUCT),$(filter $(TARGET_PRODUCT),GT-I5500))
 MY_SUPPLICANT_DIR := wpa_supplicant
 else
-MY_SUPPLICANT_DIR := opensrc_0_6_9
+MY_SUPPLICANT_DIR := wpa_supplicant_ath
 endif
 PREBUILT_WAPI_LIBS := true
 
@@ -20,9 +20,9 @@ TARGET_ARCH_V=armv7
 
 ifeq ($(PREBUILT_WAPI_LIBS),true)
 include $(CLEAR_VARS)
-LOCAL_PREBUILT_LIBS := 	opensrc_0_6_9/wpa_supplicant/$(TARGET_ARCH_V)/libiwnwai_asue.a \
-       		       	opensrc_0_6_9/wpa_supplicant/$(TARGET_ARCH_V)/libsms4.a \
-		       	opensrc_0_6_9/wpa_supplicant/$(TARGET_ARCH_V)/libecc.a
+LOCAL_PREBUILT_LIBS := 	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libiwnwai_asue.a \
+       		       	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libsms4.a \
+		       	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libecc.a
 include $(BUILD_MULTI_PREBUILT)
 LOCAL_STATIC_LIBRARIES := libiwnwai_asue libsms4 libecc
 else
