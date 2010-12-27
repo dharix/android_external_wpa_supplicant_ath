@@ -1,4 +1,4 @@
-#ifeq ($(WPA_SUPPLICANT_VERSION),VER_0_6_ATHEROS)
+ifeq ($(WPA_SUPPLICANT_VERSION),VER_0_6_ATHEROS)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 include $(LOCAL_PATH)/.config
@@ -1214,4 +1214,4 @@ L_CFLAGS :=
 LIBS :=
 OBJS_p :=
 
-#endif # VER_0_6_ATHEROS
+endif # VER_0_6_ATHEROS
