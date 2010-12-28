@@ -23,6 +23,7 @@ include $(CLEAR_VARS)
 LOCAL_PREBUILT_LIBS := 	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libiwnwai_asue.a \
        		       	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libsms4.a \
 		       	wpa_supplicant_ath/wpa_supplicant/$(TARGET_ARCH_V)/libecc.a
+LOCAL_MODULE_TAGS := optional		       	
 include $(BUILD_MULTI_PREBUILT)
 LOCAL_STATIC_LIBRARIES := libiwnwai_asue libsms4 libecc
 else
@@ -31,12 +32,14 @@ LOCAL_SRC_FILES:= $(MY_SUPPLICANT_DIR)/wpa_supplicant/wapi/ECC2.2-2008/ecc.c \
                   $(MY_SUPPLICANT_DIR)/wpa_supplicant/wapi/ECC2.2-2008/hmac.c
 LOCAL_CFLAGS += -DWN_ECC_GCCINT64 -DASUE
 LOCAL_MODULE := libecc
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
 OBJS_iw = cert.c common.c interface.c wapi.c
 LOCAL_SRC_FILES:= $(addprefix $(MY_SUPPLICANT_DIR)/wpa_supplicant/wapi/libiwnwai_asue/,$(OBJS_iw))
 LOCAL_MODULE := libiwnwai_asue
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -47,6 +50,7 @@ LOCAL_CFLAGS += -DLE
 endif
 LOCAL_CFLAGS += -DWN_ECC_GCCINT64 -DASUE
 LOCAL_MODULE := libsms4
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_STATIC_LIBRARY)
 endif # PREBUILT_WAPI_LIBS
 endif # CONFIG_WAPI
@@ -91,12 +95,12 @@ L_CFLAGS += -DANDROID_ECLAIR
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1))
+ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1 2.3.1))
 L_CFLAGS += -DANDROID_ECLAIR -DANDROID_FROYO
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1))
+ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1 2.3.1))
 $(error Cannot determinate the android version $(PLATFORM_VERSION))
 endif
 
@@ -1188,6 +1192,7 @@ LOCAL_SHARED_LIBRARIES += libcutils
 LOCAL_CFLAGS := $(L_CFLAGS)
 LOCAL_SRC_FILES := $(addprefix $(MY_SUPPLICANT_DIR)/,$(OBJS))
 LOCAL_C_INCLUDES := $(INCLUDES)
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
 
 ####################################
@@ -1200,6 +1205,7 @@ LOCAL_C_INCLUDES = $(INCLUDES)
 LOCAL_SHARED_LIBRARIES := libcutils
 LOCAL_COPY_HEADERS_TO := libwpa_client
 LOCAL_COPY_HEADERS := $(MY_SUPPLICANT_DIR)/src/common/wpa_ctrl.h
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -1208,6 +1214,7 @@ LOCAL_MODULE_TAGS := user
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT)/etc/wifi
 LOCAL_SRC_FILES := $(MY_SUPPLICANT_DIR)/wpa_supplicant/android.conf
+LOCAL_MODULE_TAGS := optional
 include $(BUILD_PREBUILT)
 
 L_CFLAGS :=
