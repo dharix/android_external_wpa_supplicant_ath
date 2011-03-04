@@ -100,7 +100,7 @@ L_CFLAGS += -DANDROID_ECLAIR -DANDROID_FROYO
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1 2.3.1))
+ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1 2.3.1 2.3.3))
 $(error Cannot determinate the android version $(PLATFORM_VERSION))
 endif
 
