@@ -95,7 +95,7 @@ L_CFLAGS += -DANDROID_ECLAIR
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1 2.3.1))
+ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1 2.3.1 2.3.3))
 L_CFLAGS += -DANDROID_ECLAIR -DANDROID_FROYO
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
