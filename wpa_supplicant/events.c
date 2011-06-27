@@ -455,7 +455,11 @@ wpa_supplicant_select_bss_wpa(struct wpa_supplicant *wpa_s,
 			wpa_printf(MSG_INFO, "   skip - blacklisted");
 			continue;
 		}
-		
+
+		if (ssid_len == 0) {
+			wpa_printf(MSG_INFO, "   skip - SSID not known");
+			continue;
+		}
 
 		if (wpa_ie_len == 0 && rsn_ie_len == 0
 #ifdef CONFIG_WAPI
@@ -548,6 +552,11 @@ wpa_supplicant_select_bss_non_wpa(struct wpa_supplicant *wpa_s,
 		e = wpa_blacklist_get(wpa_s, bss->bssid);
 		if (e && e->count > 1) {
 			wpa_printf(MSG_INFO, "   skip - blacklisted");
+			continue;
+		}
+
+		if (ssid_len == 0) {
+			wpa_printf(MSG_INFO, "   skip - SSID not known");
 			continue;
 		}
 

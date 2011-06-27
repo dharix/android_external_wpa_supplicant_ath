@@ -203,10 +203,12 @@ static void wpa_supplicant_scan(void *eloop_ctx, void *timeout_ctx)
 #endif /* CONFIG_WPS */
 
 	if (wpa_s->use_client_mlme) {
+		wpa_printf(MSG_DEBUG, "%s(%d): use client mlme\n", __func__, __LINE__);
 		ieee80211_sta_set_probe_req_ie(wpa_s, extra_ie, extra_ie_len);
 		ret = ieee80211_sta_req_scan(wpa_s, ssid ? ssid->ssid : NULL,
 					     ssid ? ssid->ssid_len : 0);
 	} else {
+		wpa_printf(MSG_DEBUG, "%s(%d): Not use client mlme\n", __func__, __LINE__);
 		wpa_drv_set_probe_req_ie(wpa_s, extra_ie, extra_ie_len);
 		ret = wpa_drv_scan(wpa_s, ssid ? ssid->ssid : NULL,
 				   ssid ? ssid->ssid_len : 0);

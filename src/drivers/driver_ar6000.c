@@ -1289,6 +1289,7 @@ int wpa_driver_ar6000_scan(void *priv, const u8 *ssid, size_t ssid_len)
 		(scan_probe_flag && (ssid && ssid_len)) ? 1 : 0);
 	if (scan_probe_flag && (ssid && ssid_len)) {
 #else
+	wpa_printf(MSG_DEBUG, "%s: No ANDROID_FROYO defines", __func__);
 	if (ssid && ssid_len) {
 #endif
 		os_memset(&req, 0, sizeof(req));
