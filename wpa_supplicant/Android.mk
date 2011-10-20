@@ -5,11 +5,11 @@ include $(LOCAL_PATH)/.config
 
 LOCAL_PATH := $(call my-dir)/../..
 
-ifeq ($(TARGET_PRODUCT),$(filter $(TARGET_PRODUCT),GT-I5500))
-MY_SUPPLICANT_DIR := wpa_supplicant
-else
+#ifeq ($(TARGET_PRODUCT),$(filter $(TARGET_PRODUCT),GT-I5500))
+#MY_SUPPLICANT_DIR := wpa_supplicant
+#else
 MY_SUPPLICANT_DIR := wpa_supplicant_ath
-endif
+#endif
 PREBUILT_WAPI_LIBS := true
 
 ifdef CONFIG_WAPI
@@ -95,12 +95,12 @@ L_CFLAGS += -DANDROID_ECLAIR
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1 2.3.1 2.3.3 2.3.4))
+ifeq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),2.2 2.2.1 2.3.1 2.3.3 2.3.4 2.3.7))
 L_CFLAGS += -DANDROID_ECLAIR -DANDROID_FROYO
 L_CFLAGS += -Iframeworks/base/cmds/keystore
 endif
 
-ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1 2.3.1 2.3.3 2.3.4))
+ifneq ($(PLATFORM_VERSION),$(filter $(PLATFORM_VERSION),1.6 1.5 2.0 2.1 Eclair 2.1-update1 2.2 2.2.1 2.3.1 2.3.3 2.3.4 2.3.7))
 $(error Cannot determinate the android version $(PLATFORM_VERSION))
 endif
 
