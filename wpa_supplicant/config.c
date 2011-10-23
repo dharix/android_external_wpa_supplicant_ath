@@ -370,7 +370,8 @@ static int wpa_config_parse_psk(const struct parse_data *data,
 			return -1;
 		os_memcpy(ssid->passphrase, value, len);
 		ssid->passphrase[len] = '\0';
-		wpa_printf(MSG_INFO, "%s: passphrase %p %s\n", __func__, ssid->passphrase, ssid->passphrase ? ssid->passphrase : "none");
+		// Disabled for security
+		// wpa_printf(MSG_INFO, "%s: passphrase %p %s\n", __func__, ssid->passphrase, ssid->passphrase ? ssid->passphrase : "none");
 		return 0;
 #else /* CONFIG_NO_PBKDF2 */
 		wpa_printf(MSG_ERROR, "Line %d: ASCII passphrase not "
