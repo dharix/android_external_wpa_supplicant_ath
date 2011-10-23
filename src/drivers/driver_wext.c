@@ -2636,7 +2636,7 @@ int wpa_driver_wext_driver_cmd(void *priv, char *cmd, char *buf, size_t buf_len)
 		os_strncpy(ifr.ifr_name, drv->ifname, IFNAMSIZ);
 		if(ioctl(drv->ioctl_sock, SIOCGIFHWADDR, &ifr)==0) {
 			char *mac = ifr.ifr_hwaddr.sa_data;
-			return os_snprintf(buf, buf_len, "Macaddr = %02X.%02X.%02X.%02X.%02X.%02X\n",
+			return os_snprintf(buf, buf_len, "Macaddr = %02X:%02X:%02X:%02X:%02X:%02X\n",
 						mac[0], mac[1], mac[2],
 						mac[3], mac[4], mac[5]);
 		}
